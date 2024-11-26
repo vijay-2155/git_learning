@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Operations</title>
+</head>
+<body>
+    <h1>Number Operations</h1>
+    <p>Enter a number and choose an operation:</p>
+    <input type="number" id="number" placeholder="Enter a number">
+    <button onclick="displayFactorial()">Factorial</button>
+    <button onclick="displayFibonacci()">Fibonacci Series</button>
+    <button onclick="displayPrimes()">Prime Numbers</button>
+    <button onclick="checkPalindrome()">Palindrome Check</button>
+    <p id="result"></p>
+
+    <script>
+        // Function to calculate factorial
+        function factorial(n) {
+            if (n === 0 || n === 1) return 1;
+            return n * factorial(n - 1);
+        }
+
+        function displayFactorial() {
+            const num = parseInt(document.getElementById("number").value);
+            if (num < 0) {
+                document.getElementById("result").textContent = "Factorial is not defined for negative numbers.";
+                return;
+            }
+            document.getElementById("result").textContent = `Factorial of ${num} is ${factorial(num)}.`;
+        }
+
+        // Function to generate Fibonacci series
+        function fibonacci(n) {
+            const series = [0, 1];
+            for (let i = 2; i <= n; i++) {
+                series.push(series[i - 1] + series[i - 2]);
+            }
+            return series.slice(0, n + 1);
+        }
+
+        function displayFibonacci() {
+            const num = parseInt(document.getElementById("number").value);
+            if (num < 0) {
+                document.getElementById("result").textContent = "Please enter a non-negative number.";
+                return;
+            }
+            const series = fibonacci(num);
+            document.getElementById("result").textContent = `Fibonacci series up to ${num}: ${series.join(", ")}`;
+        }
+
+        // Function to check for prime numbers
+        function isPrime(n) {
+            if (n < 2) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function displayPrimes() {
+            const num = parseInt(document.getElementById("number").value);
+            if (num < 2) {
+                document.getElementById("result").textContent = "No prime numbers less than 2.";
+                return;
+            }
+            const primes = [];
+            for (let i = 2; i <= num; i++) {
+                if (isPrime(i)) primes.push(i);
+            }
+            document.getElementById("result").textContent = `Prime numbers up to ${num}: ${primes.join(", ")}`;
+        }
+
+        // Function to check if a number is a palindrome
+        function isPalindrome(n) {
+            const str = n.toString();
+            return str === str.split("").reverse().join("");
+        }
+
+        function checkPalindrome() {
+            const num = parseInt(document.getElementById("number").value);
+            if (isPalindrome(num)) {
+                document.getElementById("result").textContent = `${num} is a palindrome.`;
+            } else {
+                document.getElementById("result").textContent = `${num} is not a palindrome.`;
+            }
+        }
+    </script>
+</body>
+</html>
