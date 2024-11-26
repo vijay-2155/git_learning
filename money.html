@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denomination Calculator</title>
+</head>
+<body>
+    <h1>Bank Denomination Calculator</h1>
+    <label for="amountInput">Enter Amount:</label>
+    <input type="number" id="amountInput" placeholder="Enter the amount in Rs" min="1">
+    <br><br>
+    <button onclick="calculateDenomination()">Calculate</button>
+    <p id="result" style="margin-top: 20px;"></p>
+
+    <script>
+        function calculateDenomination() {
+            const amount = parseInt(document.getElementById("amountInput").value);
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("result").textContent = "Please enter a valid amount greater than 0.";
+                return;
+            }
+
+            const denominations = [100, 50, 20, 10, 5, 2, 1];
+            let remainingAmount = amount;
+            let output = `Deposited amount: Rs. ${amount}<br><br>`;
+
+            denominations.forEach(denomination => {
+                const count = Math.floor(remainingAmount / denomination);
+                if (count > 0) {
+                    output += `${count} - Rs. ${denomination}'s<br>`;
+                }
+                remainingAmount %= denomination;
+            });
+
+            document.getElementById("result").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
