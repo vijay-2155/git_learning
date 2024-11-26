@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Demo</title>
+    <style>
+        /* Simple Selectors */
+        /* Element Selector */
+        h1 {
+            color: blue;
+        }
+
+        /* ID Selector */
+        #unique {
+            color: green;
+        }
+
+        /* Class Selector */
+        .highlight {
+            background-color: yellow;
+        }
+
+        /* Group Selector */
+        p, h2 {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Universal Selector */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Combinator Selectors */
+        /* Descendant Selector */
+        div p {
+            color: red;
+        }
+
+        /* Child Selector */
+        div > ul {
+            border: 2px solid black;
+        }
+
+        /* Adjacent Sibling Selector */
+        h2 + p {
+            color: orange;
+        }
+
+        /* General Sibling Selector */
+        h2 ~ p {
+            font-style: italic;
+        }
+
+        /* Pseudo-Class Selectors */
+        a:hover {
+            color: purple;
+            text-decoration: underline;
+        }
+
+        li:first-child {
+            font-weight: bold;
+        }
+
+        /* Pseudo-Element Selectors */
+        p::first-line {
+            font-size: larger;
+        }
+
+        p::after {
+            content: " - End of paragraph";
+            color: gray;
+        }
+
+        /* Attribute Selector */
+        input[type="text"] {
+            border: 2px solid blue;
+        }
+
+        input[type="submit"] {
+            background-color: lightblue;
+            border: none;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Selectors Example</h1>
+
+    <h2 id="unique">Simple Selectors</h2>
+    <p class="highlight">This paragraph demonstrates a class selector.</p>
+
+    <h2>Combinator Selectors</h2>
+    <div>
+        <p>This is inside a div (descendant selector).</p>
+        <ul>
+            <li>This is a list item (child selector).</li>
+            <li>Another list item.</li>
+        </ul>
+    </div>
+    <p>This is adjacent to the heading (adjacent sibling selector).</p>
+    <p>This is another sibling (general sibling selector).</p>
+
+    <h2>Pseudo-Class and Pseudo-Element Selectors</h2>
+    <a href="#">Hover over this link</a>
+    <p>This is a paragraph with pseudo-element styling.</p>
+
+    <h2>Attribute Selectors</h2>
+    <form>
+        <input type="text" placeholder="Enter text here">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
